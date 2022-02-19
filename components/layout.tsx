@@ -7,7 +7,9 @@ const Layout = ({ children }) => {
       <Box position="absolute" top="0" left="0" width="250px">
         <Sidebar />
       </Box>
-      <Box marginLeft="250px">{children}</Box>
+      <Box marginLeft="250px">
+        <Box height="calc(100vh - 100px)">{children}</Box>
+      </Box>
       <Box position="absolute" bottom="0" left="0">
         Music player
       </Box>
