@@ -15,6 +15,7 @@ const run = async () => {
         update: {},
         create: {
           name: artist.name,
+          avatar: artist.avatar,
           songs: {
             create: artist.songs.map((song) => ({
               name: song.name,
@@ -35,9 +36,11 @@ const run = async () => {
     },
     update: {},
     create: {
-      name: 'test',
-      email: 'user@test.com',
-      password: bcrypt.hashSync('password', salt),
+      firstName: 'Leslie',
+      lastName: 'Thurlow',
+      email: 'l@test.com',
+      avatar: 'https://avatarfiles.alphacoders.com/245/245850.jpg',
+      password: bcrypt.hashSync('pass', salt),
     },
   })
 

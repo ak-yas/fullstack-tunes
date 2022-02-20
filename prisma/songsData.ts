@@ -1,9 +1,11 @@
 export const artistsData: {
   name: string
+  avatar: string
   songs: any[]
 }[] = [
   {
     name: 'Glitch',
+    avatar: 'https://i.redd.it/p7qslz5jt0o71.jpg',
     songs: [
       {
         name: 'Fermi Paradox',
@@ -15,6 +17,8 @@ export const artistsData: {
   },
   {
     name: 'Purple Cat',
+    avatar:
+      'https://inspgr.id/app/uploads/2019/07/motion-cabeza-patata-feature.jpg',
     songs: [
       {
         name: 'Long Day',
@@ -25,6 +29,7 @@ export const artistsData: {
   },
   {
     name: 'Ben Sound',
+    avatar: 'https://i.scdn.co/image/ab6761610000e5ebc02d416c309a68b04dc94576',
     songs: [
       {
         name: 'The Elevator Bossa Nova',
@@ -35,6 +40,8 @@ export const artistsData: {
   },
   {
     name: 'LiQWYD',
+    avatar:
+      'https://www.anrfactory.com/wp-content/uploads/2021/11/Spotify-Avatar.jpg',
     songs: [
       {
         name: 'Winter',
@@ -45,6 +52,7 @@ export const artistsData: {
   },
   {
     name: 'FSM Team',
+    avatar: 'https://dl.dropboxusercontent.com/s/bgiv0ssz3xpotz9/peep.png?dl=0',
     songs: [
       {
         name: 'Eternal Springtime',

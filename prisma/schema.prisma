@@ -15,13 +15,14 @@ model User {
   id        Int        @id @default(autoincrement())
   createAt  DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  name      String
-  last      String
+  firstName String
+  lastName  String
   email     String     @unique
   password  String
+  avatar    String
   playlists Playlist[]
 }
- 
+
 model Song {
   id        Int        @id @default(autoincrement())
   createAt  DateTime   @default(now())
@@ -39,6 +40,7 @@ model Artist {
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
   name      String   @unique
+  avatar    String
   songs     Song[]
 }
 
