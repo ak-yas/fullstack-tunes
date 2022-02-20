@@ -16,11 +16,12 @@ model User {
   createAt  DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   name      String
+  last      String
   email     String     @unique
   password  String
   playlists Playlist[]
 }
-
+ 
 model Song {
   id        Int        @id @default(autoincrement())
   createAt  DateTime   @default(now())
