@@ -1,34 +1,41 @@
 import { Box, Text } from '@chakra-ui/layout'
 import GradientLayout from '../../components/gradientLayout'
+import SongsPanel from '../../components/SongsPanel'
 import { validateToken } from '../../lib/auth'
 import { usePlaylist } from '../../lib/hooks'
 import prisma from '../../lib/prisma'
 
-const Playlist = () => {
-  const { playlists, isLoading } = usePlaylist()
+const getBGColor = (id) => {
+  const colors = [
+    'red',
+    'blue',
+    'orange',
+    'purple',
+    'yellow',
+    'teal',
+    'red',
+    'pink',
+    'green',
+  ]
+  return colors[id - 1] || colors[Math.floor(Math.random() * colors.length)]
+}
+
+const Playlist = ({ playlist }) => {
+  const color = getBGColor(playlist.id)
 
   return (
     <GradientLayout
-      isLoading={isLoading}
-      color="red"
+      home={false}
+      roundImage={false}
+      isLoading={!playlist}
+      color={color}
       subtitle="playlist"
-      title={!isLoading && `Playlist`}
+      title={playlist.name}
+      description={`${playlist.songs.length} songs`}
       image="https://socioblend.com/blog/wp-content/uploads/2020/12/spotify-909238494-1024x536.jpg"
     >
-      <Box paddingX="40px">
-        <Box marginBottom="40px">
-          <Text
-            fontSize="2xl"
-            fontWeight="bold"
-            marginTop="10px"
-            minWidth="250px"
-          >
-            Top artist this month
-          </Text>
-          <Text fontSize="md" color="gray" minWidth="250px">
-            Only visible to you
-          </Text>
-        </Box>
+      <Box paddingX="10px">
+        <SongsPanel songs={playlist.songs} />
       </Box>
     </GradientLayout>
   )

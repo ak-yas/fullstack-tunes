@@ -56,7 +56,7 @@ const GradientLayout = ({
             >
               {title}
             </Text>
-            <Text fontSize="smaller" color="gray">
+            <Text fontSize="smaller" color={home ? 'gray' : 'white'}>
               {description}
             </Text>
           </Box>
