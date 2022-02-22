@@ -6,7 +6,7 @@ import Player from './player'
 const PlayerBox = () => {
   const songs = useStoreState((store: any) => store.activeSongs)
   const activeSong = useStoreState((store: any) => store.activeSong)
-
+  console.log(songs)
   return (
     <Box height="100px" bg="gray.900" width="100vw" padding="10px">
       <Flex align="center">
@@ -29,7 +29,7 @@ const PlayerBox = () => {
         )}
         {activeSong && (
           <Box width="40%">
-            <Player activeSong={activeSong} songs={songs} />
+            {activeSong && <Player activeSong={activeSong} songs={songs} />}
           </Box>
         )}
       </Flex>

@@ -11,6 +11,7 @@ const SongsPanel = ({ songs }) => {
 
   const handlePlay = (activeSong?) => {
     setActiveSong(activeSong || songs[0])
+    playSongs(songs)
   }
 
   return (

@@ -16,7 +16,7 @@ const Home = ({ artists }) => {
       subtitle="profile"
       title={!isLoading && `${user.firstName} ${user.lastName}`}
       description={!isLoading && `${user?.playlistCount} public playlists`}
-      image={!isLoading && user.avatar}
+      image={!isLoading ? user.avatar : null}
     >
       <Box paddingX="40px">
         <Box marginBottom="40px">

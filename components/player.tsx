@@ -20,17 +20,31 @@ import {
   MdOutlinePauseCircleFilled,
   MdOutlineRepeat,
 } from 'react-icons/md'
+import { useStoreActions } from 'easy-peasy'
 import { formatTime } from '../lib/formatters'
 
 const Player = ({ songs, activeSong }) => {
   const [playing, setPlaying] = useState(false)
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(
+    songs.findIndex((s) => s.id === activeSong.id)
+  )
   const [seek, setSeek] = useState(0)
   const [isSeeking, setIsSeeking] = useState(false)
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
   const [duration, setDuration] = useState(0)
   const soundRef = useRef(null)
+  const repeatRef = useRef(repeat)
+  const shuffleRef = useRef(shuffle)
+  const setActiveSong = useStoreActions((state: any) => state.changeActiveSong)
+
+  useEffect(() => {
+    repeatRef.current = repeat
+  }, [repeat])
+
+  useEffect(() => {
+    shuffleRef.current = shuffle
+  }, [shuffle])
 
   useEffect(() => {
     let timerId
@@ -46,6 +60,10 @@ const Player = ({ songs, activeSong }) => {
     }
     cancelAnimationFrame(timerId)
   }, [playing, isSeeking])
+
+  useEffect(() => {
+    setActiveSong(songs[index])
+  }, [index, setActiveSong, songs])
 
   const setPlayState = (value) => setPlaying(value)
   const onShuffle = () => {
@@ -63,7 +81,7 @@ const Player = ({ songs, activeSong }) => {
 
   const nextSong = () => {
     setIndex((state: any) => {
-      if (shuffle) {
+      if (shuffleRef.current) {
         // shuffle logic
         const next = Math.floor(Math.random() * songs.length)
 
@@ -77,7 +95,7 @@ const Player = ({ songs, activeSong }) => {
   }
 
   const onEnd = () => {
-    if (repeat) {
+    if (repeatRef.current) {
       setSeek(0)
       soundRef.current.seek(0)
     } else {
