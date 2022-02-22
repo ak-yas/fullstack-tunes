@@ -20,10 +20,10 @@ const SongsPanel = ({ songs }) => {
         <Table variant="unstyled">
           <Thead borderBottom="1px solid" borderColor="rgba(255,255,255,0.2)">
             <Tr>
-              <Th>#</Th>
-              <Th>Title</Th>
+              <Th width="10px">#</Th>
+              <Th width="50%">Title</Th>
               <Th>Date added</Th>
-              <Th>
+              <Th width="10px">
                 <AiOutlineClockCircle />
               </Th>
             </Tr>
