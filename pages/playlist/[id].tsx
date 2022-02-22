@@ -1,8 +1,7 @@
-import { Box, Text } from '@chakra-ui/layout'
+import { Box } from '@chakra-ui/layout'
 import GradientLayout from '../../components/gradientLayout'
 import SongsPanel from '../../components/SongsPanel'
 import { validateToken } from '../../lib/auth'
-import { usePlaylist } from '../../lib/hooks'
 import prisma from '../../lib/prisma'
 
 const getBGColor = (id) => {
@@ -65,6 +64,7 @@ export const getServerSideProps = async ({ query, req }) => {
             select: {
               name: true,
               id: true,
+              avatar: true,
             },
           },
         },
